@@ -18,11 +18,14 @@ chosen based on some variable-specific range.
 Function arguments:
 
 > paramSearch(nSet, isBoost, isVerb)
+
 > nSet = number of param sets (NUMERIC)
+
 > isBoost = use boost or not (BOOLEAN)
+
 > isVerb = use of verbose in xgb for model output (0, 1, 2)
 
-Example: 
+Example:
 > param10 <- paramSearch(100, FALSE, 1)  
 
 ### To Do
