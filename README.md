@@ -15,7 +15,7 @@ XGBoost incorporates some statistical elements from the following sources:
     and breaks down a range of topics in great detail. Including -
     basic function estimation, numerical optimization in function
     space (non-parametric), optimization in data space, regularization,
-    and much, much more. 
+    and much, much more.
 
 
 ######
@@ -50,6 +50,7 @@ Example:
 > param10 <- paramSearch(100, FALSE, 1)  
 
 ### To Do
+- [ ] Alt param search with gridsearch ([Caret R](http://machinelearningmastery.com/tuning-machine-learning-models-using-the-caret-r-package/))
 - [ ] Automate paramSearch() with XGB runs
 - [ ] Automate calculating lowest prediction value
 - [ ] Cross-validate lowest prediction value (?)
