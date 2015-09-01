@@ -20,6 +20,14 @@ XGBoost incorporates some statistical elements from the following sources:
 
 ######
 
+### Resources
+
+* [XGB in Kaggle - Otto](https://www.kaggle.com/tqchen/otto-group-product-classification-challenge/understanding-xgboost-model-on-otto-data/notebook)
+
+* [Swanky XGB Tutorial](https://github.com/dmlc/xgboost/blob/master/R-package/vignettes/xgboostPresentation.Rmd)
+
+* [Swanky XGB Tutorial 2](https://github.com/dmlc/xgboost/blob/master/R-package/vignettes/discoverYourData.Rmd)
+
 
 ### Notes
 
@@ -29,7 +37,19 @@ project analyzing methods of lowest effort with highest yield. Primarily focused
 on binary classification.
 
 In other words: how can we minimize our time and effort while also obtaining
-the greatest level of prediction that is practical and meaningful?  
+the greatest level of prediction that is practical and meaningful?
+
+###### Example:
+
+    If nrounds = 100, model of 100 trees is built. Each tree is built by the dataset
+    being divided recursively several times. End product is groups of observations.
+    - Each division operation = split.
+    - Each group at each split = branch.
+    - Deepest branch = leaf.
+    NOTE: not all splits are equally important (& boosting = adding weighted models).
+
+    - Gain = improvement through each split
+    - Each split is done on one feature only at one value.
 
 ### Use
 

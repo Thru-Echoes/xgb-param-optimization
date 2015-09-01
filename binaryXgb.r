@@ -61,3 +61,29 @@ pred = t(pred)
 # Output submission
 pred = format(pred, digits=2,scientific=F) # shrink the size of submission
 write.csv(pred,file='xgb_trial1_nonBoosted_output.csv', quote=FALSE,row.names=FALSE)
+
+########################################
+########### CHECK OUT DATA! ############
+########################################
+
+# bst == model from XGB
+#  -> model of 100 trees
+#  		-> each tree built via recursive division of dataset
+
+# first 10 lines of model
+model <- xgb.dump(bst, with.stats=T)
+model[1:10]
+
+# each line = branch
+
+# feature importance = averaging gain of each feature for all splits and trees
+
+names <- dimnames(x[trind,])[[2]]
+importance_matrix <- xgb.importance(names, model=bst)
+# get top 10 most important features
+xgb.plot.importance(importance_matrix[1:10,])
+
+# tree graph
+xgb.plot.tree(feature_names = names, model = bst, n_first_tree = 2)
+
+################ END ##################
