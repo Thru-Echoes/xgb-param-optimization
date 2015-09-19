@@ -5,12 +5,14 @@
 XGBoost incorporates some statistical elements from the following sources:
 
 ###### Additive Logistic Regression a Statistical View of Boosting
-    *J. H. Friedman, T. Hastie, R. Tibshirani*
+    Author: J. H. Friedman, T. Hastie, R. Tibshirani
+
     This paper uses second-order statistics for tree splitting - a similar
     method is used in XGB.
 
 ###### Greedy Function Approximation: a Gradient Boosting Machine
-    *J. H. Friedman*
+    Author: J. H. Friedman
+
     This is the first paper about gradient boosting. It is very lengthy
     and breaks down a range of topics in great detail. Including -
     basic function estimation, numerical optimization in function
@@ -18,7 +20,14 @@ XGBoost incorporates some statistical elements from the following sources:
     and much, much more.
 
 
-######
+### Files
+
+1. binaryXgb.r
+    * R code for XGBoost training, cross-validation, and testing for binary input data
+2. paramSearch.r
+    * R command for random parameter searching for XGBoost
+3. rasterXgb.r
+    * R command(s) for use of raster data in XGB binary prediction
 
 ### Resources
 
