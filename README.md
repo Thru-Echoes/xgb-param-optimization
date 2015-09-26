@@ -24,9 +24,13 @@ XGBoost incorporates some statistical elements from the following sources:
 
 1. binaryXgb.r
     * R code for XGBoost training, cross-validation, and testing for binary input data
-2. paramSearch.r
-    * R command for random parameter searching for XGBoost
-3. rasterXgb.r
+2. paramLin.r
+    * R command for random parameter searching for linear boosted XGB models
+    * Calculates the min mean error and index of the respective boosting round  
+3. paramTree.r
+    * R command for random parameter searching for tree boosted XGB models
+    * Calculates the min mean error and index of the respective boosting round
+4. rasterXgb.r
     * R command(s) for use of raster data in XGB binary prediction
 
 ### Resources
@@ -62,25 +66,23 @@ the greatest level of prediction that is practical and meaningful?
 
 ### Use
 
-paramSearch() can be used to return a set of param that were each randomly
-chosen based on some variable-specific range.
+*paramTree()* and *paramLin()* can be used to return a set of randomly generated parameters for tree boosted and linear boosted XGB runs, respectively.
 
-Function arguments:
+Example Usage:
 
-> paramSearch(nSet, isBoost, isVerb)
+    # Generate 10k random parameter sets for linear boosting
+    params10k_lin <- lapply(1:10000, function(i) {
+        print("Linear status: ")
+        print(i)
+        paramLin()
+    })
 
-> nSet = number of param sets (NUMERIC)
+    # Generate 10k random parameter sets for tree boosting
+    params10k_tree <- lapply(1:10000, function(i) {
+        print("Tree status: ")
+        print(i)
+        paramTree()
+    })
 
-> isBoost = use boost or not (BOOLEAN)
-
-> isVerb = use of verbose in xgb for model output (0, 1, 2)
-
-Example:
-> param10 <- paramSearch(100, FALSE, 1)  
-
-### To Do
+### Potential To Do
 - [ ] Alt param search with gridsearch ([Caret R](http://machinelearningmastery.com/tuning-machine-learning-models-using-the-caret-r-package/))
-- [ ] Automate paramSearch() with XGB runs
-- [ ] Automate calculating lowest prediction value
-- [ ] Cross-validate lowest prediction value (?)
-- [ ] Obtain param set from paramSearch() with lowest (best) score

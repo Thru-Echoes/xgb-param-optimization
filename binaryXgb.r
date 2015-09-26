@@ -1,5 +1,9 @@
 require(xgboost)
 
+# Parameter searching
+source("paramTree.r")
+source("paramLin.r")
+
 # data = y, 101, 102, 103, ...
 target1 <- read.csv(file.choose(), header=TRUE, check.names=FALSE)
 target0 <- read.csv(file.choose(), header=TRUE, check.names=FALSE)
@@ -40,14 +44,19 @@ teind = (nrow(train)+1):nrow(x)
 ######## CONFIG FOR BASIC XGB ##########
 ########################################
 
-param <- list("objective" = "binary:logistic",
-				"max.depth" = 2,
-				"nthread" = 6,
-				"eta" = 1)
+# Linear boosting XGB model
+params10k_lin <- lapply(1:10000, function(i) {
+  print("Linear status: ")
+  print(i)
+  paramLin()
+})
 
-# cross validation
-cv.nround = 500
-xgb.cv(param=param, data=x[trind,], nfold=3, label=y, nrounds=cv.nround, verbose=2)
+# Tree boosting XGB model
+params10k_tree <- lapply(1:10000, function(i) {
+  print("Tree status: ")
+  print(i)
+  paramTree()
+})
 
 # standard run
 nround = 100
