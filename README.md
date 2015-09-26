@@ -86,3 +86,4 @@ Example Usage:
 
 ### Potential To Do
 - [ ] Alt param search with gridsearch ([Caret R](http://machinelearningmastery.com/tuning-machine-learning-models-using-the-caret-r-package/))
+- [ ] Rerun linear boosted parameter optimization methods with extra linear boosting parameters (i.e. lambda, alpha, lambda_bias)
