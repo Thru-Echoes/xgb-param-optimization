@@ -1,6 +1,20 @@
 ## XGB param optimization
 
-### General Overview
+Use of [eXtreme Gradient Boosting](https://github.com/dmlc/xgboost) (XGBoost / XGB) with minor
+tweaks and modifications to enhance binary prediction abilities.
+Specifically interested in low sample size and messy data.
+
+Part of a larger methods project analyzing prediction abilities
+with lowest (human) effort and highest yield within binary
+classification problems.
+
+Question:
+How can we minimize time and effort while also obtaining the
+greatest level of prediction power that is meaningful,
+generalizable, and practical for non-computational researchers
+to use?      
+
+### General Overview of XGBoost
 
 XGBoost incorporates some statistical elements from the following sources:
 
@@ -20,6 +34,22 @@ XGBoost incorporates some statistical elements from the following sources:
     and much, much more.
 
 
+###### Basic info on boosting and XGB:
+
+    If nrounds = 100, model of 100 trees is built. Each tree is
+    built by the dataset being divided recursively several times.
+    End product is groups of observations.
+
+        - Each division operation = split.
+        - Each group at each split = branch.
+        - Deepest branch = leaf.
+
+    NOTE: not all splits are equally important
+    (& boosting = adding weighted models).
+
+        - Gain = improvement through each split
+        - Each split is done on one feature only at one value.
+
 ### Files
 
 1. binaryXgb.r
@@ -32,37 +62,6 @@ XGBoost incorporates some statistical elements from the following sources:
     * Calculates the min mean error and index of the respective boosting round
 4. rasterXgb.r
     * R command(s) for use of raster data in XGB binary prediction
-
-### Resources
-
-* [XGB in Kaggle - Otto](https://www.kaggle.com/tqchen/otto-group-product-classification-challenge/understanding-xgboost-model-on-otto-data/notebook)
-
-* [Swanky XGB Tutorial](https://github.com/dmlc/xgboost/blob/master/R-package/vignettes/xgboostPresentation.Rmd)
-
-* [Swanky XGB Tutorial 2](https://github.com/dmlc/xgboost/blob/master/R-package/vignettes/discoverYourData.Rmd)
-
-
-### Notes
-
-Use of XGB in R (xgboost R wrappers within RStudio). Minor tweaks and modifications
-attempting to enhance predictive abilities of generic xgb runs. Part of a larger
-project analyzing methods of lowest effort with highest yield. Primarily focused
-on binary classification.
-
-In other words: how can we minimize our time and effort while also obtaining
-the greatest level of prediction that is practical and meaningful?
-
-###### Example:
-
-    If nrounds = 100, model of 100 trees is built. Each tree is built by the dataset
-    being divided recursively several times. End product is groups of observations.
-    - Each division operation = split.
-    - Each group at each split = branch.
-    - Deepest branch = leaf.
-    NOTE: not all splits are equally important (& boosting = adding weighted models).
-
-    - Gain = improvement through each split
-    - Each split is done on one feature only at one value.
 
 ### Use
 
@@ -139,3 +138,13 @@ Alternative - Param Search:
 ### Potential To Do
 - [ ] Alt param search with gridsearch ([Caret R](http://machinelearningmastery.com/tuning-machine-learning-models-using-the-caret-r-package/))
 - [ ] Rerun linear boosted parameter optimization methods with extra linear boosting parameters (i.e. lambda, alpha, lambda_bias)
+
+### Resources
+
+* [XGB in Kaggle - Otto](https://www.kaggle.com/tqchen/otto-group-product-classification-challenge/understanding-xgboost-model-on-otto-data/notebook)
+
+* [Swanky XGB Tutorial](https://github.com/dmlc/xgboost/blob/master/R-package/vignettes/xgboostPresentation.Rmd)
+
+* [Swanky XGB Tutorial 2](https://github.com/dmlc/xgboost/blob/master/R-package/vignettes/discoverYourData.Rmd)
+
+* [Why Boosting Doesn't Overfit](http://jeremykun.com/2015/09/21/the-boosting-margin-or-why-boosting-doesnt-overfit/)
