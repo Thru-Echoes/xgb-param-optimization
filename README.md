@@ -132,8 +132,8 @@ Alternative - Param Search:
     ...
 
     # linMeans now contains the params for lowest mean error
-    # for 10 different 1k Linear boosted XGB models 
-    linMeans <- c(linMeans, params1k_lin10[[which.means10]])
+    # for 10 different 1k Linear boosted XGB models
+    linMeans <- c(linMeans, params1k_lin10[[which.min(means10)]])
 
 
 ### Potential To Do
