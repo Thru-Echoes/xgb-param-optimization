@@ -41,7 +41,7 @@ teind = (nrow(train)+1):nrow(x)
 
 
 ########################################
-######## CONFIG FOR BASIC XGB ##########
+############ PARAM SEARCH ##############
 ########################################
 
 # Linear boosting XGB model
@@ -57,6 +57,54 @@ params10k_tree <- lapply(1:10000, function(i) {
   print(i)
   paramTree()
 })
+
+########################################
+######### FIND OPTIMAL PARAMS ##########
+########################################
+
+allMeans <- lappy(1:10000, function(i) {
+		params10k_lin[[i]]$minMean
+	})
+
+# display params for lowest mean error
+params10k_lin[[which.min(allMeans)]]
+
+
+########################################
+####### ALT: FIND OPTIMAL PARAMS #######
+########################################
+
+params1k_lin1 <- lappy(1:1000, function(i) {
+	print("Linear status: ")
+	print(i)
+	paramLin()
+})
+
+params1k_lin2 <- lappy(1:1000, function(i) {
+	print("Linear status: ")
+	print(i)
+	paramLin()
+})
+
+# ... up to _lin10
+
+linMeans <- vector()
+
+means1 <- lappy(1:1000, function(i) {
+	params1k_lin1[[i]]$minMean
+})
+
+linMeans <- c(linMeans, params1k_lin1[[which.min(means1)]])
+
+means2 <- lappy(1:1000, function(i) {
+	params1k_lin2[[i]]$minMean
+})
+
+# ... up to means10 
+
+########################################
+######## AFTER OPTIMAL PARAMS ##########
+########################################
 
 # standard run
 nround = 100

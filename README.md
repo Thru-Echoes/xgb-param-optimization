@@ -84,6 +84,58 @@ Example Usage:
         paramTree()
     })
 
+Optimal Param Search:
+
+    # Find optimal params from min mean and index
+    allMeans <- lappy(1:10000, function(i) {
+    	params10k_lin[[i]]$minMean
+    })
+
+    # display params for lowest mean error
+    params10k_lin[[which.min(allMeans)]]
+
+Alternative - Param Search:
+
+    # Split runs into 10x1k for intermediate variable storage
+    params1k_lin1 <- lappy(1:1000, function(i) {
+        print("Linear status: ")
+        print(i)
+        paramLin()
+    })
+
+    params1k_lin2 <- lappy(1:1000, function(i) {
+        print("Linear status: ")
+        print(i)
+        paramLin()
+    })
+
+    ...
+
+    params1k_lin10 <- ...
+
+    # Store intermediate min error mean values and params
+
+    linMeans <- vector()
+
+    means1 <- lappy(1:1000, function(i) {
+        params1k_lin1[[i]]$minMean              
+    })
+
+    linMeans <- c(linMeans, params1k_lin1[[which.min(means1)]])
+
+    means2 <- lappy(1:1000, function(i) {
+        params1k_lin2[[i]]$minMean              
+    })
+
+    linMeans <- c(linMeans, params1k_lin2[[which.min(means2)]])
+
+    ...
+
+    # linMeans now contains the params for lowest mean error
+    # for 10 different 1k Linear boosted XGB models 
+    linMeans <- c(linMeans, params1k_lin10[[which.means10]])
+
+
 ### Potential To Do
 - [ ] Alt param search with gridsearch ([Caret R](http://machinelearningmastery.com/tuning-machine-learning-models-using-the-caret-r-package/))
 - [ ] Rerun linear boosted parameter optimization methods with extra linear boosting parameters (i.e. lambda, alpha, lambda_bias)
