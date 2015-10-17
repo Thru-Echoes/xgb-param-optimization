@@ -8,6 +8,9 @@ paramLin <- function() {
                 "gamma" = 0,
                 "min_child_weight" = 1,
                 "nthread" = 8,
+                "lambda" = 0.0
+                "alpha" = 0.0,
+                "lambda_bias" = 0.0,
                 "booster" = "gblinear")
   allResults <- vector()
 
@@ -16,6 +19,9 @@ paramLin <- function() {
   param$eta <- runif(1, 0.01, 0.6)
   param$gamma <- runif(1, 0.0, 100)
   param$min_child_weight <- runif(1, 0.0, 100)
+  param$lambda <- 1.0
+  param$alpha <- 1.0
+  param$lambda_bias <- 1.0
 
   # cross validation
   cv.nround = 1000
@@ -29,6 +35,9 @@ paramLin <- function() {
   cvParam <- list("max.depth" = param$max.depth,
                   "eta" = param$eta,
                   "min_child_weight" = param$min_child_weight,
+                  "lambda" = param$lambda,
+                  "alpha" = param$alpha,
+                  "lambda_bias" = param$lambda_bias,
                   "minMean" = minMean,
                   "idxMinMean" = idxMinMean)
   allResults <- c(allResults, cvParam)

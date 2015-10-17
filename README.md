@@ -135,6 +135,53 @@ Alternative - Param Search:
     linMeans <- c(linMeans, params1k_lin10[[which.min(means10)]])
 
 
+### Params: regularization (lambda and alpha)
+
+```
+1. alpha: L1 regularization
+    * help reduce overfitting
+2. lambda: L2 regularization
+    * help reduce overfitting
+```  
+
+So what is overfitting?
+
+```
+Overview: train a model too much, weights fit train data
+ perfectly but are not applicable to any other data.
+```
+
+How to prevent overfitting?
+
+```
+Prevent extreme weights: very small or very large
+```
+
+So what is regularization?
+
+```
+Add regularization value to further penalize weights
+ by adding to calculation of error term.   
+```
+
+L1 regularization
+```
+Add sum of absolute value to error term
+```
+
+L2 regularization
+```
+Add sum squared value to error term
+```
+
+*NOTE:*  L1 regularization can sometimes drive feature weight
+to 0.0 
+
+    * this means that feature is not important / not needed
+
+[Better understanding of regularization](https://msdn.microsoft.com/en-us/magazine/dn904675.aspx)
+
+
 ### Potential To Do
 - [ ] Alt param search with gridsearch ([Caret R](http://machinelearningmastery.com/tuning-machine-learning-models-using-the-caret-r-package/))
 - [ ] Rerun linear boosted parameter optimization methods with extra linear boosting parameters (i.e. lambda, alpha, lambda_bias)

@@ -94,15 +94,17 @@ means1 <- lappy(1:1000, function(i) {
 	params1k_lin1[[i]]$minMean
 })
 
-linMeans <- c(linMeans, params1k_lin1[[which.min(means1)]])
+linMeans <- c(linMeans, list(params1k_lin1[[which.min(means1)]]))
 
 means2 <- lappy(1:1000, function(i) {
 	params1k_lin2[[i]]$minMean
 })
 
-linMeans <- c(linMeans, params1k_lin2[[which.min(means2)]])
+linMeans <- c(linMeans, list(params1k_lin2[[which.min(means2)]]))
 
 # ... up to means10
+
+write.csv(linMeans, "top_linearBoost_params.csv")
 
 ########################################
 ######## AFTER OPTIMAL PARAMS ##########
