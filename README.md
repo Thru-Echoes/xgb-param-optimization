@@ -12,7 +12,11 @@ Question:
 How can we minimize time and effort while also obtaining the
 greatest level of prediction power that is meaningful,
 generalizable, and practical for non-computational researchers
-to use?      
+to use?    
+
+### We have to make a to-do list
+
+Right here - it is very important. Thank you.   
 
 ### General Overview of XGBoost
 
@@ -175,7 +179,7 @@ Add sum squared value to error term
 ```
 
 *NOTE:*  L1 regularization can sometimes drive feature weight
-to 0.0 
+to 0.0
 
     * this means that feature is not important / not needed
 
